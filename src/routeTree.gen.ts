@@ -10,33 +10,63 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as ManagingTrusteeRouteImport } from './routes/managing-trustee'
+import { Route as SabhaRouteImport } from './routes/sabha'
+import { Route as VedaPatasalaRouteImport } from './routes/veda-patasala'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ManagingTrusteeRoute = ManagingTrusteeRouteImport.update({
+  id: '/managing-trustee',
+  path: '/managing-trustee',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SabhaRoute = SabhaRouteImport.update({
+  id: '/sabha',
+  path: '/sabha',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const VedaPatasalaRoute = VedaPatasalaRouteImport.update({
+  id: '/veda-patasala',
+  path: '/veda-patasala',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/managing-trustee': typeof ManagingTrusteeRoute
+  '/sabha': typeof SabhaRoute
+  '/veda-patasala': typeof VedaPatasalaRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/managing-trustee': typeof ManagingTrusteeRoute
+  '/sabha': typeof SabhaRoute
+  '/veda-patasala': typeof VedaPatasalaRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/managing-trustee': typeof ManagingTrusteeRoute
+  '/sabha': typeof SabhaRoute
+  '/veda-patasala': typeof VedaPatasalaRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths: '/' | '/managing-trustee' | '/sabha' | '/veda-patasala'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to: '/' | '/managing-trustee' | '/sabha' | '/veda-patasala'
+  id: '__root__' | '/' | '/managing-trustee' | '/sabha' | '/veda-patasala'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  ManagingTrusteeRoute: typeof ManagingTrusteeRoute
+  SabhaRoute: typeof SabhaRoute
+  VedaPatasalaRoute: typeof VedaPatasalaRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -48,11 +78,35 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/managing-trustee': {
+      id: '/managing-trustee'
+      path: '/managing-trustee'
+      fullPath: '/managing-trustee'
+      preLoaderRoute: typeof ManagingTrusteeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sabha': {
+      id: '/sabha'
+      path: '/sabha'
+      fullPath: '/sabha'
+      preLoaderRoute: typeof SabhaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/veda-patasala': {
+      id: '/veda-patasala'
+      path: '/veda-patasala'
+      fullPath: '/veda-patasala'
+      preLoaderRoute: typeof VedaPatasalaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  ManagingTrusteeRoute: ManagingTrusteeRoute,
+  SabhaRoute: SabhaRoute,
+  VedaPatasalaRoute: VedaPatasalaRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
