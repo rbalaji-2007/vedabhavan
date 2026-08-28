@@ -11,11 +11,14 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as ActivitiesRouteImport } from './routes/activities'
+import { Route as CancellationRouteImport } from './routes/cancellation'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as DonateRouteImport } from './routes/donate'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as ManagingTrusteeRouteImport } from './routes/managing-trustee'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as SabhaRouteImport } from './routes/sabha'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as VedaPatasalaRouteImport } from './routes/veda-patasala'
 import { Route as VedaVaniRouteImport } from './routes/veda-vani'
 
@@ -27,6 +30,11 @@ const IndexRoute = IndexRouteImport.update({
 const ActivitiesRoute = ActivitiesRouteImport.update({
   id: '/activities',
   path: '/activities',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CancellationRoute = CancellationRouteImport.update({
+  id: '/cancellation',
+  path: '/cancellation',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ContactRoute = ContactRouteImport.update({
@@ -49,9 +57,19 @@ const ManagingTrusteeRoute = ManagingTrusteeRouteImport.update({
   path: '/managing-trustee',
   getParentRoute: () => rootRouteImport,
 } as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SabhaRoute = SabhaRouteImport.update({
   id: '/sabha',
   path: '/sabha',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
   getParentRoute: () => rootRouteImport,
 } as any)
 const VedaPatasalaRoute = VedaPatasalaRouteImport.update({
@@ -68,22 +86,28 @@ const VedaVaniRoute = VedaVaniRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/activities': typeof ActivitiesRoute
+  '/cancellation': typeof CancellationRoute
   '/contact': typeof ContactRoute
   '/donate': typeof DonateRoute
   '/gallery': typeof GalleryRoute
   '/managing-trustee': typeof ManagingTrusteeRoute
+  '/privacy': typeof PrivacyRoute
   '/sabha': typeof SabhaRoute
+  '/terms': typeof TermsRoute
   '/veda-patasala': typeof VedaPatasalaRoute
   '/veda-vani': typeof VedaVaniRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/activities': typeof ActivitiesRoute
+  '/cancellation': typeof CancellationRoute
   '/contact': typeof ContactRoute
   '/donate': typeof DonateRoute
   '/gallery': typeof GalleryRoute
   '/managing-trustee': typeof ManagingTrusteeRoute
+  '/privacy': typeof PrivacyRoute
   '/sabha': typeof SabhaRoute
+  '/terms': typeof TermsRoute
   '/veda-patasala': typeof VedaPatasalaRoute
   '/veda-vani': typeof VedaVaniRoute
 }
@@ -91,11 +115,14 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/activities': typeof ActivitiesRoute
+  '/cancellation': typeof CancellationRoute
   '/contact': typeof ContactRoute
   '/donate': typeof DonateRoute
   '/gallery': typeof GalleryRoute
   '/managing-trustee': typeof ManagingTrusteeRoute
+  '/privacy': typeof PrivacyRoute
   '/sabha': typeof SabhaRoute
+  '/terms': typeof TermsRoute
   '/veda-patasala': typeof VedaPatasalaRoute
   '/veda-vani': typeof VedaVaniRoute
 }
@@ -104,33 +131,42 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/activities'
+    | '/cancellation'
     | '/contact'
     | '/donate'
     | '/gallery'
     | '/managing-trustee'
+    | '/privacy'
     | '/sabha'
+    | '/terms'
     | '/veda-patasala'
     | '/veda-vani'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
     | '/activities'
+    | '/cancellation'
     | '/contact'
     | '/donate'
     | '/gallery'
     | '/managing-trustee'
+    | '/privacy'
     | '/sabha'
+    | '/terms'
     | '/veda-patasala'
     | '/veda-vani'
   id:
     | '__root__'
     | '/'
     | '/activities'
+    | '/cancellation'
     | '/contact'
     | '/donate'
     | '/gallery'
     | '/managing-trustee'
+    | '/privacy'
     | '/sabha'
+    | '/terms'
     | '/veda-patasala'
     | '/veda-vani'
   fileRoutesById: FileRoutesById
@@ -138,11 +174,14 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   ActivitiesRoute: typeof ActivitiesRoute
+  CancellationRoute: typeof CancellationRoute
   ContactRoute: typeof ContactRoute
   DonateRoute: typeof DonateRoute
   GalleryRoute: typeof GalleryRoute
   ManagingTrusteeRoute: typeof ManagingTrusteeRoute
+  PrivacyRoute: typeof PrivacyRoute
   SabhaRoute: typeof SabhaRoute
+  TermsRoute: typeof TermsRoute
   VedaPatasalaRoute: typeof VedaPatasalaRoute
   VedaVaniRoute: typeof VedaVaniRoute
 }
@@ -161,6 +200,13 @@ declare module '@tanstack/react-router' {
       path: '/activities'
       fullPath: '/activities'
       preLoaderRoute: typeof ActivitiesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cancellation': {
+      id: '/cancellation'
+      path: '/cancellation'
+      fullPath: '/cancellation'
+      preLoaderRoute: typeof CancellationRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/contact': {
@@ -191,11 +237,25 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ManagingTrusteeRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/sabha': {
       id: '/sabha'
       path: '/sabha'
       fullPath: '/sabha'
       preLoaderRoute: typeof SabhaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/veda-patasala': {
@@ -218,11 +278,14 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   ActivitiesRoute: ActivitiesRoute,
+  CancellationRoute: CancellationRoute,
   ContactRoute: ContactRoute,
   DonateRoute: DonateRoute,
   GalleryRoute: GalleryRoute,
   ManagingTrusteeRoute: ManagingTrusteeRoute,
+  PrivacyRoute: PrivacyRoute,
   SabhaRoute: SabhaRoute,
+  TermsRoute: TermsRoute,
   VedaPatasalaRoute: VedaPatasalaRoute,
   VedaVaniRoute: VedaVaniRoute,
 }

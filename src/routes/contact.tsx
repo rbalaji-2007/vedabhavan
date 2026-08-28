@@ -27,6 +27,8 @@ const INTERESTS = [
   "General Enquiry",
 ];
 
+import { toast } from "sonner";
+
 function ContactPage() {
   const [sent, setSent] = useState(false);
 
@@ -61,6 +63,7 @@ function ContactPage() {
             onSubmit={(e) => {
               e.preventDefault();
               setSent(true);
+              toast.success("நன்றி! உங்கள் செய்தி பெறப்பட்டது / Thank you! Your enquiry has been received.");
             }}
           >
             <div>

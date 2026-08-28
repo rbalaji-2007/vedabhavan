@@ -76,25 +76,56 @@ function DonatePage() {
           ))}
         </div>
 
-        <div className="mandala-bg mx-auto mt-16 max-w-3xl rounded-lg border border-border p-8 text-center">
-          <h3 className="font-display text-2xl text-maroon">To contribute</h3>
-          <p className="mt-4 text-sm leading-relaxed text-foreground/80">
-            Bank details and an online payment option will be published here once the trust’s registration and
-            payment gateway are finalised. In the meantime, please write to us and we will guide you.
+        <div className="mandala-bg mx-auto mt-16 max-w-3xl rounded-lg border border-border p-8 text-center shadow-soft">
+          <h3 className="font-display text-2xl text-maroon">Bank Transfer &amp; Payment Details</h3>
+          <p className="mt-2 text-xs uppercase tracking-[0.14em] text-muted-foreground">
+            வங்கி விவரங்கள் &amp; நன்கொடை விவரங்கள்
           </p>
-          <Link
-            to="/contact"
-            className="mt-7 inline-flex rounded-md bg-primary px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.16em] text-primary-foreground transition-colors hover:bg-maroon"
-          >
-            Contact Us to Donate
-          </Link>
-          <p className="mt-6 text-xs text-muted-foreground">
-            Donations are governed by our{" "}
+
+          <div className="mt-6 text-left grid gap-4 rounded-md border border-border bg-card p-6 text-sm">
+            <div className="flex justify-between border-b border-border/60 pb-2">
+              <span className="text-muted-foreground">Account Name:</span>
+              <span className="font-semibold text-foreground">Vedashramam Sabha</span>
+            </div>
+            <div className="flex justify-between border-b border-border/60 pb-2">
+              <span className="text-muted-foreground">Bank &amp; Branch:</span>
+              <span className="font-semibold text-foreground">Puducherry Branch</span>
+            </div>
+            <div className="flex justify-between border-b border-border/60 pb-2">
+              <span className="text-muted-foreground">Account No / IFSC:</span>
+              <span className="font-semibold text-foreground">[To be published upon gateway finalisation]</span>
+            </div>
+            <div className="flex justify-between">
+              <span className="text-muted-foreground">UPI ID:</span>
+              <span className="font-semibold text-foreground">vedashramam@upi (Placeholder)</span>
+            </div>
+          </div>
+
+          <p className="mt-6 text-sm leading-relaxed text-foreground/80">
+            For online gateway contributions or specific sponsorship inquiries (Vidyadanam / Annadanam), please write to us directly. Tax receipts under Section 80G will be issued upon verification.
+          </p>
+          <div className="mt-7 flex flex-wrap justify-center gap-4">
+            <Link
+              to="/contact"
+              className="inline-flex rounded-md bg-primary px-8 py-3.5 text-xs font-semibold uppercase tracking-[0.16em] text-primary-foreground transition-colors hover:bg-maroon"
+            >
+              Contact Us to Donate / தொடர்புகொள்ள
+            </Link>
+          </div>
+          <div className="mt-6 flex flex-wrap justify-center gap-4 text-xs text-muted-foreground">
+            <span>Donations governed by our:</span>
+            <Link to="/terms" className="text-primary underline-offset-2 hover:underline">
+              Terms &amp; Conditions
+            </Link>
+            <span>•</span>
+            <Link to="/privacy" className="text-primary underline-offset-2 hover:underline">
+              Privacy Policy
+            </Link>
+            <span>•</span>
             <Link to="/cancellation" className="text-primary underline-offset-2 hover:underline">
               Cancellation Policy
             </Link>
-            .
-          </p>
+          </div>
         </div>
       </section>
     </PageShell>
